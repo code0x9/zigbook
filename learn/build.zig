@@ -28,6 +28,7 @@ pub fn build(b: *std.Build) void {
             .target = target,
             .optimize = optimize,
         }),
+        .linkage = .dynamic,
     });
 
     // Here we define an executable. An executable needs to have a root module
@@ -79,6 +80,7 @@ pub fn build(b: *std.Build) void {
     // step). By default the install prefix is `zig-out/` but can be overridden
     // by passing `--prefix` or `-p`.
     b.installArtifact(exe);
+    b.installArtifact(lib_fizzbuzz);
 
     // This creates a top level step. Top level steps have a name and can be
     // invoked by name when running `zig build` (e.g. `zig build run`).
